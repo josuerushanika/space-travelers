@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import '../style/Navbar.css';
+import icon from '../icons/icon.png';
 
 const Navbar = () => (
   <div>
+    <img src={icon} alt="page-logo" />
     <ul className="navs">
       <li><NavLink className="navLink" to="/">Rockets</NavLink></li>
       <li><NavLink className="navLink" to="/Missions">Missions</NavLink></li>
