@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Missions from './components/Mission';
+import Missions from './components/Missions';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Rockets from './components/Rockets';
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App;
-
