@@ -1,5 +1,5 @@
 .navBox {
-    display: flex;
+  display: flex;
 }
 
 .navLink:focus {
@@ -7,6 +7,6 @@
 }
 
 .page-logo {
-    height: 70px;
-    width: auto;
+  height: 70px;
+  width: auto;
 }
