@@ -8,10 +8,11 @@ const initialState = {
   error: null,
 };
 
-export const fetchRocketData = createAsyncThunk('rockets/fetchRockets', async () => {
+export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
   try {
-    const res = await fetch(apiUrl);
-    return res.json();
+    const response = await fetch(apiUrl);
+    const result = await response.json();
+    return result;
   } catch (error) {
     return error.message;
   }
@@ -36,12 +37,12 @@ export const rocketSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(fetchRocketData.pending, (state) => ({
+    builder.addCase(fetchRockets.pending, (state) => ({
       ...state,
       status: 'loading',
     }))
 
-      .addCase(fetchRocketData.fulfilled, (state, action) => ({
+      .addCase(fetchRockets.fulfilled, (state, action) => ({
         ...state,
         rocketListData: action.payload.map((rocketData) => ({
           id: rocketData.id,
@@ -49,9 +50,9 @@ export const rocketSlice = createSlice({
           description: rocketData.description,
           flickr_image: rocketData.flickr_images,
         })),
-        status: 'succeeded',
+        status: 'loading',
       }))
-      .addCase(fetchRocketData.rejected, (state, action) => ({
+      .addCase(fetchRockets.rejected, (state, action) => ({
         ...state,
         state: 'failed',
         error: [...state.error, action.error.message],
