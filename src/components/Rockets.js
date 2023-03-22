@@ -17,19 +17,6 @@ const Rockets = () => {
         )}
       </div>
     </>
-
-  // {rockets.map(
-  //   ({
-  //     id, rocket_name, description, flickr_images,
-  //   }) => (
-  //     <div key={id}>
-  //       <img src={flickr_images[0]} alt="img" />
-  //       <h2>{rocket_name}</h2>
-  //       <p>{description}</p>
-
-  //     </div>
-  //   ),
-  // )}
   );
 };
 
