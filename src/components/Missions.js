@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
-import { fetchMissions } from '../redux/mission/missionSlice';
+import { fetchMissions, joinMission, leaveMission } from '../redux/mission/missionSlice';
 
 const Missions = () => {
   const { missions } = useSelector((state) => state.missions);
@@ -29,7 +29,7 @@ const Missions = () => {
               <td>{mission.description}</td>
               <td>{mission.joined ? <Badge bg="primary">ACTIVE MEMBER</Badge> : <Badge bg="secondary"> NOT A MEMBER</Badge> }</td>
               <td>
-                {mission.joined ? <button type="button">Leave Mission</button> : <button type="button">Join Mission</button> }
+                {mission.joined ? <button type="button" onClick={() => dispatch(leaveMission(mission.mission_id))}>Leave Mission</button> : <button type="button" onClick={() => dispatch(joinMission(mission.mission_id))}>Join Mission</button> }
               </td>
             </tr>
           ))}
