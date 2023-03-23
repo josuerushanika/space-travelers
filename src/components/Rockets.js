@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Badge } from 'react-bootstrap';
 import { reserveRocket, cancelRocket } from '../redux/rockets/rocketSlice';
+import styling from '../style/Rocket.module.css';
 
 const Rockets = () => {
   const rockets = useSelector((state) => state.rockets.rocketListData);
@@ -19,7 +20,7 @@ const Rockets = () => {
         {rockets.length > 0 && (
           rockets.map((rocket) => (
             <div key={rocket.id}>
-              <img src={rocket.flickr_image[0]} alt="img" />
+              <img src={rocket.flickr_image[0]} alt="img" className={styling.image} />
               <h2>{rocket.name}</h2>
               <p>
 
