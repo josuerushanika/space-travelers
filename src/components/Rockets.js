@@ -16,7 +16,7 @@ const Rockets = () => {
 
   return (
     <>
-      <div>
+      <div className={styling.maindiv}>
         {rockets.length > 0 && (
           rockets.map((rocket) => (
             <div key={rocket.id}>
