@@ -34,6 +34,7 @@ export const rocketSlice = createSlice({
         return rocketData;
       }),
     }),
+
   },
 
   extraReducers(builder) {
