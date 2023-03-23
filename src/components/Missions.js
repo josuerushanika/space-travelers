@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
-import { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
-import { fetchMissions, joinMission, leaveMission } from '../redux/mission/missionSlice';
+import { joinMission, leaveMission } from '../redux/mission/missionSlice';
 
 const Missions = () => {
   const { missions } = useSelector((state) => state.missions);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchMissions());
-  }, [dispatch]);
+
   return (
     <div>
       Missions
