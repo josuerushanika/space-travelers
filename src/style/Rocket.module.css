@@ -1,0 +1,17 @@
+.maindiv {
+  padding: 0% 2%;
+}
+
+.rocketLine {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.img {
+  height: 300px;
+  width: 350px;
+}
+
+.rightSide {
+  padding: 0% 2%;
+}
