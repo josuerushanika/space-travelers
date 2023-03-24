@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import '../style/Profile.css';
 
 const Profile = () => {
   const { missions } = useSelector((state) => state.missions);
@@ -18,13 +19,13 @@ const Profile = () => {
   }, [rockets]);
 
   return (
-    <div>
+    <div className="profile-main">
       <div className="missionBox">
-        <h1>My Missions</h1>
+        <h1 className="selected-header">My Missions</h1>
         {joinedMissions.length ? (
-          <div className="joinedMissions">
+          <div className="joinedMission">
             {joinedMissions.map((mission) => (
-              <div key={mission.mission_id} className="joinedMission">
+              <div key={mission.mission_id} className="joinedMissions">
                 {mission.mission_name}
               </div>
             ))}
@@ -35,11 +36,11 @@ const Profile = () => {
       </div>
 
       <div className="missionBox">
-        <h1>My Rockets</h1>
+        <h1 className="selected-header">My Rockets</h1>
         {reservedRockets.length ? (
           <div className="reservedRockets">
             {reservedRockets.map((rocket) => (
-              <div key={rocket.rocket_id} className="reservedRocket">
+              <div key={rocket.rocket_id} className="joinedMissions">
                 {rocket.name}
               </div>
             ))}

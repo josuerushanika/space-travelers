@@ -1,9 +1,50 @@
 .navBox {
   display: flex;
+  justify-content: space-between;
+  padding: 0% 2%;
+}
+
+.navleft {
+  display: flex;
+  width: 40%;
+}
+
+h1 {
+  margin-left: 2%;
+}
+
+.navright {
+  display: flex;
+  align-items: center;
+  width: 17.9%;
+}
+
+.navs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0%;
+}
+
+.navLink {
+  text-decoration: none;
+  align-self: center;
+  font-size: 1.2rem;
+}
+
+.line {
+  color: blue;
+}
+
+.profile {
+  margin-left: -8%;
 }
 
 .navLink:focus {
   color: red;
+  text-decoration: underline;
 }
 
 .page-logo {
