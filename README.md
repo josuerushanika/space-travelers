@@ -36,7 +36,7 @@
 <br>
 
 <!-- DEPLOYMENT -->
-<!-- ### This project goes live [here](https://josuerushanika.github.io/Capstone_2/dist/) 🚀 .
+<!-- ### This project goes live [here](https://space-travelers-f2ji.onrender.com/) 🚀 .
 
 <br> -->
 
