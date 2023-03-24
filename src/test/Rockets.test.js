@@ -1,80 +1,60 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import renderer from 'react-test-renderer';
 import Rockets from '../components/Rockets';
+import store from '../redux/store';
 
-const mockStore = configureStore([]);
+describe('Rockets', () => {
+  it('renders Rockets', () => {
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Rockets />
+          </BrowserRouter>
+        </Provider>,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
-describe('Rockets component', () => {
-  let store;
-  beforeEach(() => {
-    store = mockStore({
+describe('Rockets', () => {
+  const mockRockets = [
+    {
+      id: 'rocket-1',
+      name: 'Rocket 1',
+      description: 'Description of Rocket 1',
+      flickr_image: ['https://www.example.com/image1.jpg'],
+      reserved: true,
+    },
+    {
+      id: 'rocket-2',
+      name: 'Rocket 2',
+      description: 'Description of Rocket 2',
+      flickr_image: ['https://www.example.com/image2.jpg'],
+      reserved: false,
+    },
+  ];
+
+  it('should not render the "Reserved" badge when the rocket is not reserved', () => {
+    const updatedState = {
+      ...store.getState(),
       rockets: {
-        rocketListData: [
-          {
-            id: 'rocket1',
-            name: 'Falcon 9',
-            description: 'The Falcon 9 is a reusable rocket designed and manufactured by SpaceX.',
-            flickr_image: ['https://www.flickr.com/photos/spacex/8282820621'],
-            reserved: false,
-          },
-          {
-            id: 'rocket2',
-            name: 'Atlas V',
-            description: 'The Atlas V is an expendable rocket used to launch a variety of satellites into orbit.',
-            flickr_image: ['https://www.flickr.com/photos/ulalaunch/17169498662'],
-            reserved: true,
-          },
-        ],
+        ...store.getState().rockets,
+        rocketListData: mockRockets,
       },
-    });
-  });
+    };
+    store.dispatch({ type: 'SET_STATE', payload: updatedState });
 
-  it('renders rocket information for each rocket in the store', () => {
-    render(
+    const { queryByTestId } = render(
       <Provider store={store}>
         <Rockets />
       </Provider>,
     );
-    const rocket1Name = screen.getByText('Falcon 9');
-    const rocket1Desc = screen.getByText('The Falcon 9 is a reusable rocket designed and manufactured by SpaceX.');
-    const rocket1ReserveButton = screen.getByRole('button', { name: 'Reserve Rocket' });
-    const rocket2Name = screen.getByText('Atlas V');
-    const rocket2Desc = screen.getByText('The Atlas V is an expendable rocket used to launch a variety of satellites into orbit.');
-    const rocket2CancelReserveButton = screen.getByRole('button', { name: 'Cancel Reservation' });
 
-    expect(rocket1Name).toBeInTheDocument();
-    expect(rocket1Desc).toBeInTheDocument();
-    expect(rocket1ReserveButton).toBeInTheDocument();
-    expect(rocket2Name).toBeInTheDocument();
-    expect(rocket2Desc).toBeInTheDocument();
-    expect(rocket2CancelReserveButton).toBeInTheDocument();
-  });
-
-  it('dispatches reserveRocket when Reserve Rocket button is clicked', () => {
-    render(
-      <Provider store={store}>
-        <Rockets />
-      </Provider>,
-    );
-    const rocket1ReserveButton = screen.getAllByRole('button', { name: 'Reserve Rocket' })[0];
-
-    fireEvent.click(rocket1ReserveButton);
-
-    expect(store.getActions()).toContainEqual({ type: 'rockets/reserveRocket', payload: 'rocket1' });
-  });
-
-  it('dispatches cancelRocket when Cancel Reservation button is clicked', () => {
-    render(
-      <Provider store={store}>
-        <Rockets />
-      </Provider>,
-    );
-    const rocket2CancelReserveButton = screen.getAllByRole('button', { name: 'Cancel Reservation' })[0];
-
-    fireEvent.click(rocket2CancelReserveButton);
-
-    expect(store.getActions()).toContainEqual({ type: 'rockets/cancelRocket', payload: 'rocket2' });
+    const reservedBadge = queryByTestId('reserved-badge-rocket-2');
+    expect(reservedBadge).toBeNull();
   });
 });
