@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile renders Profile 1`] = `
+<div>
+  <div
+    className="missionBox"
+  >
+    <h1>
+      My Missions
+    </h1>
+    <div
+      className="noJoined"
+    >
+      No Missions Joined
+    </div>
+  </div>
+  <div
+    className="missionBox"
+  >
+    <h1>
+      My Rockets
+    </h1>
+    <div
+      className="noReserved"
+    >
+      No Rockets Reserved
+    </div>
+  </div>
+</div>
+`;
