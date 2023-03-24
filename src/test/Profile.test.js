@@ -29,7 +29,7 @@ describe('Profile', () => {
       </Provider>,
     );
 
-    const joinedMissions = screen.getAllByTestId('joined-mission');
+    const joinedMissions = screen.getAllByTestId('joined-mission-name');
     expect(joinedMissions).toHaveLength(2);
     expect(joinedMissions[0]).toHaveTextContent('Mission One');
     expect(joinedMissions[1]).toHaveTextContent('Mission Two');
@@ -76,6 +76,7 @@ describe('Profile', () => {
     );
 
     const reservedRockets = screen.getAllByTestId('reserved-rocket');
+
     expect(reservedRockets).toHaveLength(2);
     expect(reservedRockets[0]).toHaveTextContent('Rocket One');
     expect(reservedRockets[1]).toHaveTextContent('Rocket Two');
