@@ -3,7 +3,7 @@ import '../style/Navbar.css';
 import icon from '../icons/icon.png';
 
 const Navbar = () => (
-  <div className="navBox">
+  <div className="navBox" role="navigation">
     <img className="page-logo" src={icon} alt="page-logo" />
     <ul className="navs">
       <li><NavLink className="navLink" to="/">Rockets</NavLink></li>
