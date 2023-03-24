@@ -1,0 +1,19 @@
+.profile-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 2%;
+}
+
+.missionBox {
+    /* border: red solid; */
+    width: 48%;
+}
+
+.selected-header { 
+    margin-bottom: 3%;
+}
+.joinedMissions {
+    border: solid 1px rgb(151, 151, 151);
+    padding: 4%;
+    font-size: 1.5rem;
+}
